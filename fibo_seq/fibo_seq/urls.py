@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from feb.views import  FibonacciView
+from feb.API.views import Fibonacci
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/fibonacci/', Fibonacci.as_view(), name="api-fib"),
+    path('', FibonacciView, name="query")
 ]
